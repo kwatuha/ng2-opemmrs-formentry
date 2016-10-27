@@ -2,7 +2,7 @@ import { QuestionBase } from './question-base';
 
 export class TextInputQuestion extends QuestionBase<any> {
     placeholder: string;
-    constructor(options: TextInputQuestion) {
+    constructor(options: any) {
         super(options);
         this.placeholder = options.placeholder || '';
 
