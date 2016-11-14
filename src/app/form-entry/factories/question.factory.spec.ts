@@ -120,7 +120,7 @@ describe('Question Factory', () => {
     };
 
     let drugSchemaQuestion: any = {
-        type: 'encounterLocation',
+        type: 'drug',
         label: 'Facility name (site/satellite clinic required):',
         id: 'location',
         required: 'true',

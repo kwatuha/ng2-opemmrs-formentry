@@ -5,6 +5,7 @@ export class QuestionBase {
     type: string;
     key: string;
     label?: string;
+    data?: any;
 
     constructor(options: BaseOptions) {
 
@@ -12,6 +13,7 @@ export class QuestionBase {
         this.type = options.type;
         this.key = options.key || '';
         this.label = options.label || '';
+        this.data = options.data || '';
     }
 }
 

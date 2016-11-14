@@ -4,4 +4,5 @@ export interface BaseOptions {
     key: string;
     label?: string;
     order?: number;
+    data?: any;
 }

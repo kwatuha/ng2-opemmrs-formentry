@@ -7,6 +7,7 @@ import { DateQuestion } from '../question-models/date-question';
 import { MultiSelectQuestion } from '../question-models/multi-select-question';
 import { QuestionGroup } from '../question-models/group-question';
 import { RepeatingQuestion } from '../question-models/repeating-question';
+import { BasicOpenmrsData } from '../question-models/openmrs-data';
 
 export class QuestionFactory {
     constructor() {
@@ -23,6 +24,7 @@ export class QuestionFactory {
             };
         });
         question.type = schemaQuestion.questionOptions.rendering;
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -31,6 +33,7 @@ export class QuestionFactory {
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
         question.type = 'number';
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -39,6 +42,7 @@ export class QuestionFactory {
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
         question.type = 'number';
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -46,6 +50,7 @@ export class QuestionFactory {
         let question = new DateQuestion({ type: '', key: '' });
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -60,6 +65,7 @@ export class QuestionFactory {
         let question = new MultiSelectQuestion({ renderType: '', options: [], type: '', key: '' });
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
+        question.data = this.openMRSData(schemaQuestion);
         question.options = schemaQuestion.questionOptions.answers.map(function (obj) {
             return {
                 label: obj.label,
@@ -75,6 +81,7 @@ export class QuestionFactory {
         question.key = schemaQuestion.id;
         question.isExpanded = schemaQuestion.isExpanded;
         question.rows = schemaQuestion.questionOptions.rows;
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -83,6 +90,7 @@ export class QuestionFactory {
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
         question.type = 'text';
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -91,6 +99,7 @@ export class QuestionFactory {
         question.label = schemaQuestion.label;
         question.key = schemaQuestion.id;
         question.type = schemaQuestion.type;
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -107,6 +116,7 @@ export class QuestionFactory {
         question.label = schemaQuestion.label;
         question.questions = schemaQuestion.questions;
         question.key = schemaQuestion.id;
+        question.data = this.openMRSData(schemaQuestion);
         return question;
     }
 
@@ -187,6 +197,11 @@ export class QuestionFactory {
 
     }
 
+    openMRSData(schema: any): any {
+        let data = new BasicOpenmrsData({ concept: '', uuid: '', voided: false });
+        data.concept = schema.questionOptions.concept;
+        return data;
+    }
     getGroupMembers(schema: any): any {
         let groupMembers = [];
         this.getQuestions(schema, groupMembers);
