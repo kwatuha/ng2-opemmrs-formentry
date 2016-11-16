@@ -8,6 +8,8 @@ import { QuestionGroup } from "../question-models/group-question";
 import { RepeatingQuestion } from "../question-models/repeating-question";
 import { QuestionFactory } from "./question.factory";
 
+import { MQuestionFactory } from '../adaptors/models/question-factory';
+
 describe('Question Factory', () => {
 
     let selectSchemaQuestion: any = {
@@ -567,6 +569,8 @@ describe('Question Factory', () => {
 
     it('should convert schema select question to select question model', () => {
         let converted = factory.toSelectQuestion(selectSchemaQuestion);
+        let f = new MQuestionFactory();
+        f.createQuestionModel('kewwwwwwwwwwwwwwwwwwwwwwwwwwwwwww');
         expect(converted.label).toEqual(selectSchemaQuestion.label);
         expect(converted.options).toEqual(selectSchemaQuestion.questionOptions.answers.map(function (obj) {
             return {
