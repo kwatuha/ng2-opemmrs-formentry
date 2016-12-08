@@ -9,9 +9,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { OwlCarouselComponent } from '../components/owl-carousel';
 import { SelectModule } from '../components/select';
 import { AfeNgSelectComponent } from '../components/afe-ng-select.component';
+import { AfeDateComponent } from '../components/afe-date.component';
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, SelectModule],
-    declarations: [FormRendererComponent, OwlCarouselComponent, AfeNgSelectComponent],
+    declarations: [FormRendererComponent, OwlCarouselComponent, AfeNgSelectComponent, AfeDateComponent],
     providers: [FormBuilder, FormControlService, ValidationFactory],
     exports: [FormRendererComponent]
 })
